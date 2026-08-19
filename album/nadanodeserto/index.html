@@ -36,26 +36,20 @@
     html, body {
       min-height: 100%;
       margin: 0;
-      background: var(--bg);
+      background: #050505;
     }
 
     .background {
       position: fixed;
       inset: -45px;
-      z-index: -2;
-      background-image: url("nada-no-deserto.jpg");
-      background-size: cover;
-      background-position: center;
+      z-index: 0;
+      pointer-events: none;
+      background:
+        linear-gradient(rgba(0,0,0,.48), rgba(0,0,0,.58)),
+        url("nada-no-deserto.jpg") center / cover no-repeat;
       filter: blur(30px);
       transform: scale(1.08);
-      opacity: .54;
-    }
-
-    .background::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,.48);
+      opacity: .78;
     }
 
     body {
@@ -65,28 +59,9 @@
       overflow-x: hidden;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: -8%;
-      z-index: -2;
-      background:
-        linear-gradient(rgba(0,0,0,.34), rgba(0,0,0,.55)),
-        url("nada-no-deserto.jpg") center / cover no-repeat;
-      filter: blur(28px);
-      transform: scale(1.08);
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      background: rgba(0,0,0,.38);
-      pointer-events: none;
-    }
-
     main {
+      position: relative;
+      z-index: 1;
       width: min(100%, 520px);
       margin: 0 auto;
       padding: 30px 16px 38px;
