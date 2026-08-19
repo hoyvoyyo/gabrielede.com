@@ -46,16 +46,16 @@
       background-image: url("nada-no-deserto.jpg");
       background-size: cover;
       background-position: center;
-      filter: blur(28px);
+      filter: blur(30px);
       transform: scale(1.08);
-      opacity: .58;
+      opacity: .54;
     }
 
     .background::after {
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0,0,0,.52);
+      background: rgba(0,0,0,.48);
     }
 
     body {
@@ -101,10 +101,10 @@
       aspect-ratio: 1 / 1;
       object-fit: cover;
       display: block;
-      border-radius: 18px;
+      border-radius: 16px;
       box-shadow:
-        0 28px 70px rgba(0,0,0,.62),
-        0 8px 22px rgba(0,0,0,.34);
+        0 34px 80px rgba(0,0,0,.58),
+        0 10px 26px rgba(0,0,0,.28);
     }
 
     h1 {
@@ -115,36 +115,36 @@
       letter-spacing: -.01em;
     }
     .year {
-      margin: 18px 0 19px;
-      color: rgba(255,255,255,.76);
-      font-size: 16px;
+      margin: 20px 0 21px;
+      color: rgba(255,255,255,.64);
+      font-size: 15px;
       font-weight: 400;
-      letter-spacing: .10em;
+      letter-spacing: .14em;
       text-align: center;
     }
     .listen-label {
-      padding: 18px 18px 12px;
-      color: rgba(255,255,255,.78);
-      font-size: 12px;
+      padding: 19px 18px 13px;
+      color: rgba(255,255,255,.68);
+      font-size: 11px;
       font-weight: 600;
-      letter-spacing: .18em;
+      letter-spacing: .24em;
       text-transform: uppercase;
       text-align: center;
     }
     .stream-box {
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,.22);
-      border-radius: 18px;
-      background: rgba(14,14,14,.66);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 16px;
+      background: rgba(12,12,12,.58);
       box-shadow:
-        0 28px 70px rgba(0,0,0,.58),
-        0 8px 22px rgba(0,0,0,.28);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
+        0 30px 75px rgba(0,0,0,.50),
+        0 8px 24px rgba(0,0,0,.20);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
     }
 
     .links {
-      padding: 0 12px 12px;
+      padding: 0 14px 13px;
       border: 0;
       background: transparent;
       display: flex;
@@ -152,23 +152,24 @@
     }
 
     .link {
-      min-height: 57px;
-      padding: 10px 3px 10px 8px;
+      min-height: 58px;
+      padding: 10px 2px 10px 6px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 13px;
       color: var(--text);
       text-decoration: none;
       background: transparent;
-      transition: background-color .16s ease;
+      border-radius: 8px;
+      transition: background-color .18s ease;
     }
 
     .link + .link {
-      border-top: 1px solid rgba(255,255,255,.12);
+      border-top: 1px solid rgba(255,255,255,.095);
     }
 
     .link:hover {
-      background: rgba(255,255,255,.07);
+      background: rgba(255,255,255,.045);
     }
 
     .provider {
@@ -195,27 +196,27 @@
 
     .play {
       flex: 0 0 auto;
-      min-width: 44px;
-      height: 28px;
+      min-width: 45px;
+      height: 27px;
       padding: 0 7px;
-      border: 1px solid rgba(255,255,255,.38);
+      border: 1px solid rgba(255,255,255,.30);
       border-radius: 4px;
-      color: #ddd;
-      background: rgba(0,0,0,.16);
+      color: rgba(255,255,255,.78);
+      background: rgba(0,0,0,.10);
       font-family: inherit;
-      font-size: 10px;
+      font-size: 9px;
       font-weight: 600;
-      letter-spacing: .02em;
+      letter-spacing: .04em;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 4px;
-      transition: background-color .16s ease, border-color .16s ease;
+      transition: background-color .18s ease, border-color .18s ease;
     }
 
     .link:hover .play {
-      background: rgba(255,255,255,.10);
-      border-color: rgba(255,255,255,.65);
+      background: rgba(255,255,255,.08);
+      border-color: rgba(255,255,255,.55);
     }
 
     .play::before {
@@ -225,11 +226,12 @@
     }
 
     .social {
+      margin-top: 26px;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 13px;
-      padding: 17px 0 1px;
+      gap: 19px;
+      opacity: .72;
     }
 
     .social a {
