@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Gabriel Edé — Nada no deserto</title>
+  <link rel="preload" as="image" href="https://api.iconify.design/simple-icons:qobuz.svg?color=%2300A9FF" type="image/svg+xml">
+    <title>Gabriel Edé — Nada no deserto</title>
   <meta name="description" content="Nada no deserto — álbum de Gabriel Edé, lançado em 2026. Ouça em todas as plataformas.">
 
   <!-- Preview when sharing the page -->
@@ -71,6 +72,115 @@
       width: min(100%, 430px);
       margin: 0 auto;
     }
+
+
+
+    .video-wrap {
+      position: relative;
+      display: none;
+      aspect-ratio: 16 / 9;
+      margin-top: 0;
+      overflow: hidden;
+      border-radius: 16px;
+      background: #000;
+      box-shadow:
+        0 34px 80px rgba(0,0,0,.58),
+        0 10px 26px rgba(0,0,0,.28);
+    }
+
+    .video-wrap.active {
+      display: block;
+    }
+
+    .video-wrap iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: 0;
+    }
+
+    .video-close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      z-index: 2;
+      width: 30px;
+      height: 30px;
+      border: 1px solid rgba(255,255,255,.5);
+      border-radius: 50%;
+      background: rgba(0,0,0,.62);
+      color: white;
+      font: 20px/1 Arial, sans-serif;
+      cursor: pointer;
+    }
+
+    .video-close:hover {
+      background: rgba(0,0,0,.85);
+    }
+
+    .cover-link {
+      position: relative;
+      display: block;
+      width: 100%;
+      padding: 0;
+      border: 0;
+      color: inherit;
+      text-decoration: none;
+      background: transparent;
+      cursor: pointer;
+      border-radius: 16px;
+      box-shadow:
+        0 34px 80px rgba(0,0,0,.58),
+        0 10px 26px rgba(0,0,0,.28);
+      overflow: hidden;
+    }
+
+    .cover-link .cover {
+      box-shadow: none;
+      transition: transform .35s ease, filter .35s ease;
+    }
+
+    .cover-play {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%) scale(.92);
+      padding: 9px 13px;
+      border: 1px solid rgba(255,255,255,.72);
+      border-radius: 5px;
+      background: rgba(0,0,0,.52);
+      color: rgba(255,255,255,.94);
+      font-size: 12px;
+      line-height: 1;
+      opacity: 0;
+      transition: opacity .25s ease, transform .25s ease, background-color .25s ease;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+    }
+
+    .cover-link:hover .cover {
+      transform: scale(1.012);
+      filter: brightness(.82);
+    }
+
+    .cover-link:hover .cover-play,
+    .cover-link:focus-visible .cover-play {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .cover-link:focus-visible {
+      outline: 1px solid rgba(255,255,255,.55);
+      outline-offset: 3px;
+    }
+
+    @media (hover: none) {
+      .cover-play {
+        opacity: .88;
+        transform: translate(-50%, -50%) scale(1);
+      }
+    }
+
     .cover {
       width: 100%;
       aspect-ratio: 1 / 1;
@@ -137,6 +247,7 @@
       background: transparent;
       border-radius: 8px;
       transition: background-color .18s ease;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .link + .link {
@@ -144,7 +255,13 @@
     }
 
     .link:hover {
-      background: rgba(255,255,255,.045);
+      background: transparent;
+    }
+
+    .link:focus-visible {
+      outline: 1px solid rgba(255,255,255,.42);
+      outline-offset: -1px;
+      background: transparent;
     }
 
     .provider {
@@ -266,8 +383,23 @@
   <div class="background" aria-hidden="true"></div>
   <main>
     <section class="card">
-      <img class="cover" src="nada-no-deserto.jpg"
+      <button class="cover-link" type="button" aria-label="Reproduzir o álbum completo no YouTube" onclick="openVideo()">
+          <img class="cover" src="nada-no-deserto.jpg"
            alt="Capa do álbum Nada no deserto, de Gabriel Edé">
+          <span class="cover-play" aria-hidden="true">▶ PLAY</span>
+        </button>
+
+      <div class="video-wrap" id="video-player" aria-hidden="true">
+        <button class="video-close" type="button" onclick="closeVideo()" aria-label="Fechar vídeo">×</button>
+        <iframe
+          id="youtube-frame"
+          src=""
+          title="Gabriel Edé — Nada no deserto"
+          frameborder="0"
+          allow="autoplay; encrypted-media; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
 
       <div class="year">2026</div>
       <section class="stream-box" aria-label="Ouça o álbum">
@@ -308,7 +440,7 @@
 
         <a class="link" href="https://www.qobuz.com/us-en/album/nada-no-deserto-gabriel-ede/v2poOlvokyn7y" target="_blank" rel="noopener">
           <span class="provider">
-            <img class="provider-logo qobuz-logo" src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Qobuz_logo_light.svg" alt="">
+            <img class="provider-logo qobuz-logo" src="https://api.iconify.design/simple-icons:qobuz.svg?color=%2300A9FF" alt="">
             <span class="provider-name">Qobuz</span>
           </span>
           <span class="play">PLAY</span>
@@ -369,5 +501,31 @@
       <a href="https://gabrielede.com">gabrielede.com</a>
     </footer>
   </main>
+
+
+  <script>
+    function openVideo() {
+      const cover = document.querySelector('.cover-link');
+      const player = document.getElementById('video-player');
+      const frame = document.getElementById('youtube-frame');
+
+      frame.src = 'https://www.youtube.com/embed/QBdcH1-SA9A?autoplay=1&rel=0';
+      cover.style.display = 'none';
+      player.classList.add('active');
+      player.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeVideo() {
+      const cover = document.querySelector('.cover-link');
+      const player = document.getElementById('video-player');
+      const frame = document.getElementById('youtube-frame');
+
+      frame.src = '';
+      player.classList.remove('active');
+      player.setAttribute('aria-hidden', 'true');
+      cover.style.display = 'block';
+    }
+  </script>
+
 </body>
 </html>
